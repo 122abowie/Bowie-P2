@@ -34,24 +34,26 @@ function animate() {
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
+document.getElementById("slideShow");
 	//Access the img element and replace its source
-   document.getElementById('photo').src= mImages['mCurrentIndex'];
-
 	//with a new image from your images array which is loaded
-	//from the JSON string
+  	//from the JSON string
+document.getElementById('photo').src= mImages['mCurrentIndex'];
 	console.log('swap photo');
 }
 
 // Counter for the mImages array
 var mCurrentIndex = 0;
-
+setInterval(() => {
+    console.log(counter++)
+  }, 5000);
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
 
 mRequest.addEventListener("readystatechange", () => {
   // console.log(request, request.readyState);
   if (mRequest.readyState === 4 && mRequest.status === 200) {
-    const data = JSON.parse(mRequestText);
+    const data = JSON.parse(mJson);
     console.log(data);
   } else if (mRequest.readystate === 4) {
     console.log("could not fetch data");
@@ -62,7 +64,12 @@ mRequest.open("GET", "images.JSON");
 mRequest.send();
 
 // Array holding GalleryImage objects (see below).
-var mImages = [];
+var mImages = []
+
+var location = document.getElementsByClassName("location").innerHTML[0];
+var description = document.getElementsByClassName("description").innerHTML[1];
+var date = = document.getElementsByClassName("date").innerHTML[2];
+;
 
 // Holds the retrived JSON information
 var mJson;
