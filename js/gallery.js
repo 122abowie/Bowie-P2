@@ -64,12 +64,12 @@ mRequest.open("GET", "images.JSON");
 mRequest.send();
 
 // Array holding GalleryImage objects (see below).
-var mImages = []
+var mImages = ["location","description","date"];
 
-var location = document.getElementsByClassName("location").innerHTML[0];
-var description = document.getElementsByClassName("description").innerHTML[1];
-var date = = document.getElementsByClassName("date").innerHTML[2];
-;
+mImages[0] = document.getElementsByClassName("location").innerHTML;
+mImages[1] = document.getElementsByClassName("description").innerHTML;
+mImages[2] = document.getElementsByClassName("date").innerHTML;
+
 
 // Holds the retrived JSON information
 var mJson;
