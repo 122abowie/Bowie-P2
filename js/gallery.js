@@ -33,6 +33,12 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
+  if (index>= mImages.length) {
+      mCurrentIndex = 0;
+}
+if (index < 0) {
+    mCurrentIndex = -1;
+}
 	//Add code here to access the #slideShow element.
 document.getElementById("slideShow");
 	//Access the img element and replace its source
@@ -89,9 +95,9 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 $(document).ready( function() {
-
+function fetchJSON("mJson");
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+//	$('.details').eq(0).hide();
 
 });
 
