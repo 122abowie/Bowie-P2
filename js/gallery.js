@@ -36,8 +36,8 @@ function swapPhoto() {
   if (index>= mImages.length) {
       mCurrentIndex = 0;
 }
-if (index < 0) {
-    mCurrentIndex = -1;
+if (mCurrentIndex < 0) {
+    mCurrentIndex = mImages.length;
 }
 	//Add code here to access the #slideShow element.
 document.getElementById("slideShow");
@@ -46,6 +46,8 @@ document.getElementById("slideShow");
   	//from the JSON string
 document.getElementById('photo').src= mImages['mCurrentIndex'];
 	console.log('swap photo');
+  var mLastFrameTime = 0;
+  mCurrentIndex += 1;
 }
 
 // Counter for the mImages array
@@ -100,6 +102,12 @@ function fetchJSON("mJson");
 //	$('.details').eq(0).hide();
 
 });
+
+$("nextPhoto").click(function(){
+  var x = $("p").offset();
+  alert("Top: " + x.top + " Left: " + x.left);
+});
+
 
 window.addEventListener('load', function() {
 
