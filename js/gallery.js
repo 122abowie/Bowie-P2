@@ -59,7 +59,7 @@ var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
-
+.
 function fetchJSON()
 {
   mRequest.onreadystatechange = function() {
