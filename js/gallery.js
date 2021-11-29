@@ -93,6 +93,8 @@ function fetchJSON()
   }
   mRequest.open("GET", mUrl, true);
   mRequest.send();
+
+  
 }
 
 function makeGalleryImageOnloadCallback(galleryImage) {
