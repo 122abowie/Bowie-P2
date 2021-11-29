@@ -59,6 +59,10 @@ body {
 	width: 42px;
 }
 
+#nextPhoto:hover, #prevPhoto:hover {
+	opacity: 0.8;
+}
+
 .details p {
 	margin-top: 20px;
 }
