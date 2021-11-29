@@ -31,8 +31,8 @@ function animate() {
 }
 
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
-
 function swapPhoto() {
+
   if(mCurrentIndex >= mImages.length)
   {
     mCurrentIndex = 0;
@@ -69,12 +69,19 @@ function toggleDetails()
 }
 
 
-// Counter for the mImages array
 var mCurrentIndex = 0;
 
 // XMLHttpRequest variable
 var mRequest = new XMLHttpRequest();
-.
+
+// Array holding GalleryImage objects (see below).
+var mImages = [];
+
+// Holds the retrived JSON information
+var mJson;
+
+var mUrl;
+
 function fetchJSON()
 {
   mRequest.onreadystatechange = function() {
@@ -87,17 +94,6 @@ function fetchJSON()
   mRequest.open("GET", mUrl, true);
   mRequest.send();
 }
-
-// Array holding GalleryImage objects (see below).
-var mImages = [];
-
-
-// Holds the retrived JSON information
-var mJson;
-
-// URL for the JSON to load by default
-// Some options for you are: images.json, images.short.json; you will need to create your own extra.json later
-var mUrl = 'images.json';
 
 
 //You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
@@ -117,27 +113,31 @@ $(document).ready( function() {
   of: "#nav"
 });
 
-$("nextPhoto").click(function(){
-  var x = $("p").offset();
-  alert("Top: " + x.top + " Left: " + x.left);
-});
+  const urlParams = new URLSearchParams(window.location.search);
 
+  for (const [key, value] of urlParams) {
+      console.log(`${key}:${value}`);
+      mUrl = value;
+  }
+if(mUrl == undefined)
+{
+  	mUrl = 'images.json';
+}
+
+  fetchJSON();
+});
 
 window.addEventListener('load', function() {
 
 	console.log('window loaded');
 
 }, false);
-	//implement me as an object to hold the following data about an image:
+
 function GalleryImage() {
-  this.location;
-  	//1. location where photo was taken
-  this.description;
-  	//2. description of photo
-  this.date;
-  	//3. the date when the photo was taken
-  this.img;
-	//4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+  var location;
+  var description;
+  var date;
+  var img;
 }
 
 function iterateJSON(mJson)
