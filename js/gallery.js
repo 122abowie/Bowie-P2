@@ -95,9 +95,6 @@ function fetchJSON()
   mRequest.send();
 }
 
-
-//You can optionally use the following function as your event callback for loading the source of Images from your json data (for HTMLImageObject).
-//@param A GalleryImage object. Use this method for an event handler for loading a gallery Image object (optional).
 function makeGalleryImageOnloadCallback(galleryImage) {
 	return function(e) {
 		galleryImage.img = e.target;
